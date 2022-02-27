@@ -38,5 +38,5 @@ func main() {
     return
   }
 
-  fmt.Println("Email send successfully.")
+  fmt.Println("Email sent successfully.")
 }
