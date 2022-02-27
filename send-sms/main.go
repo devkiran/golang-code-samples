@@ -35,7 +35,6 @@ func main() {
 	}
 
 	// Create a HTTP post request
-	client := &http.Client{}
 	r, err := http.NewRequest("POST", apiPath, strings.NewReader(body.Encode()))
 	if err != nil {
 		fmt.Println(err)
@@ -43,6 +42,8 @@ func main() {
 	}
 
 	r.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+
+	client := &http.Client{}
 	res, err := client.Do(r)
 	if err != nil {
 		fmt.Println(err)
@@ -61,6 +62,8 @@ func main() {
 		fmt.Println("Vonage error: Internal Error")
 		return
 	}
+
+	fmt.Println(resp.Messages[0])
 
 	// A status of zero indicates success; a non-zero value means something went wrong.
 	if resp.Messages[0].Status != "0" {
